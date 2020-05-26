@@ -1,10 +1,17 @@
 import React from 'react';
 import { generatePath, useRouteMatch } from 'react-router';
 
+import {
+  CustomButton,
+  CustomFormControl,
+  CustomInput,
+} from './SearchBox.styles';
+
 const SearchBox = ({ value, onChange, onSubmit, history }) => {
   const match = useRouteMatch();
   return (
-    <form
+    <CustomFormControl
+      component='form'
       onSubmit={(e) => {
         e.preventDefault();
         const path = generatePath(match.path, {
@@ -17,16 +24,17 @@ const SearchBox = ({ value, onChange, onSubmit, history }) => {
         else history.push('?');
       }}
     >
-      <input
+      <CustomInput
         type='text'
         name='query'
-        className='form-control my-3'
         placeholder='Search...'
         value={value}
         onChange={(e) => onChange(e.currentTarget.value)}
       />
-      <button>Search</button>
-    </form>
+      <CustomButton variant='contained' color='primary'>
+        <i className='fas fa-search'></i>
+      </CustomButton>
+    </CustomFormControl>
   );
 };
 

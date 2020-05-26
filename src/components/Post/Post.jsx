@@ -3,6 +3,13 @@ import { useParams } from 'react-router-dom';
 
 import { getPost } from '../../services/postsService';
 
+import {
+  CustomPaper,
+  CustomTypographyBigTitle,
+  CustomTypogtaphyMediumText,
+} from './Post.styles';
+import { Wrapper, CustomMessageTypography } from '../../styles/common';
+
 const Post = () => {
   const [postData, setPostData] = React.useState({});
   const [loading, setLoading] = React.useState(true);
@@ -20,7 +27,22 @@ const Post = () => {
     })();
   }, []);
 
-  return <div>Hello from Post</div>;
+  return (
+    <Wrapper>
+      {loading ? (
+        <CustomMessageTypography>Loading...</CustomMessageTypography>
+      ) : (
+        <CustomPaper>
+          <CustomTypographyBigTitle component='h1'>
+            {postData.title}
+          </CustomTypographyBigTitle>
+          <CustomTypogtaphyMediumText component='p'>
+            {postData.body}
+          </CustomTypogtaphyMediumText>
+        </CustomPaper>
+      )}
+    </Wrapper>
+  );
 };
 
 export default Post;

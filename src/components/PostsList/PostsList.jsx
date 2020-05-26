@@ -1,21 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import PostCard from '../common/postCard';
+import { CustomList, CustomListItem, CustomLink } from './PostsList.styles';
+
+import { CustomMessageTypography } from '../../styles/common';
 
 const PostList = ({ posts }) => {
   return posts.length > 0 ? (
-    <ul>
+    <CustomList>
       {posts.map((post) => (
-        <li key={post.id}>
-          <Link to={`/post/${post.id}`}>
+        <CustomListItem key={post.id}>
+          <CustomLink to={`/post/${post.id}`}>
             <PostCard title={post.title} body={post.body} />
-          </Link>
-        </li>
+          </CustomLink>
+        </CustomListItem>
       ))}
-    </ul>
+    </CustomList>
   ) : (
-    <h1>Nothing here</h1>
+    <CustomMessageTypography component='h1'>
+      Nothing was found :(
+    </CustomMessageTypography>
   );
 };
 

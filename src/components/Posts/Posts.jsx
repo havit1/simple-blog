@@ -8,6 +8,9 @@ import SearchBox from '../SearchBox/SearchBox';
 import PostList from '../PostsList/PostsList';
 import Pagination from '../common/pagination';
 
+import { Wrapper, LoadindWrapper } from './Posts.styles';
+import { CustomMessageTypography } from '../../styles/common';
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -67,7 +70,7 @@ const Posts = ({ match, history }) => {
   }, [page, posts, filteredPosts]);
 
   return (
-    <div>
+    <Wrapper>
       <SearchBox
         value={searchQuery}
         onChange={setSearchQuery}
@@ -75,7 +78,9 @@ const Posts = ({ match, history }) => {
         onSubmit={setPage}
       />
       {loading ? (
-        <h1>Loading....</h1>
+        <LoadindWrapper>
+          <CustomMessageTypography>Loading....</CustomMessageTypography>
+        </LoadindWrapper>
       ) : (
         <>
           <PostList posts={paginatedPosts} />
@@ -91,7 +96,7 @@ const Posts = ({ match, history }) => {
           />
         </>
       )}
-    </div>
+    </Wrapper>
   );
 };
 

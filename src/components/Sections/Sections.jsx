@@ -1,5 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { StylesProvider } from '@material-ui/styles';
+
+import {
+  CustomLink,
+  CustomList,
+  CustomListItem,
+  CustomListItemText,
+} from './Sections.styles';
+
+import { Wrapper, CenteredPaper } from '../../styles/common';
 
 const Sections = () => {
   const [sections, setSections] = React.useState([
@@ -9,19 +18,21 @@ const Sections = () => {
   ]);
 
   return (
-    <div>
-      {sections.length > 0 ? (
-        <ul>
+    <Wrapper>
+      <CenteredPaper>
+        <CustomList component='ul'>
           {sections.map((section) => (
-            <li key={section.id}>
-              <Link to={`sections/${section.id}/1`}>{section.name}</Link>
-            </li>
+            <StylesProvider injectFirst>
+              <CustomListItem button key={section.id}>
+                <CustomLink to={`sections/${section.id}/1`}>
+                  <CustomListItemText>{section.name}</CustomListItemText>{' '}
+                </CustomLink>
+              </CustomListItem>
+            </StylesProvider>
           ))}
-        </ul>
-      ) : (
-        <h1>Loading...</h1>
-      )}
-    </div>
+        </CustomList>
+      </CenteredPaper>
+    </Wrapper>
   );
 };
 
