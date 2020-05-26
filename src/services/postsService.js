@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { apiUrl } from '../config.json';
 
+// Get random 20 posts
 const getPosts = (id) => {
-  console.log(id);
-  try {
-    const response = axios.get(apiUrl + `?userId=${id}&userId=${10 - id}`);
-    return response;
-  } catch (error) {
-    return error.message;
-  }
+  const response = axios.get(apiUrl + `?userId=${id}&userId=${10 - id}`);
+  return response;
 };
 
-export { getPosts };
+// Get post by it's id
+const getPost = (postId) => {
+  const response = axios.get(`${apiUrl}/${postId}`);
+  return response;
+};
+
+export { getPosts, getPost };

@@ -1,10 +1,18 @@
 import React from 'react';
+import { generatePath, useRouteMatch } from 'react-router';
 
 const SearchBox = ({ value, onChange, onSubmit, history }) => {
+  const match = useRouteMatch();
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        const path = generatePath(match.path, {
+          sectionId: match.params.sectionId,
+          pageNum: 1,
+        });
+        history.replace(path);
+        onSubmit(1);
         if (value.trim().length > 0) history.push(`?searchQuery=${value}`);
         else history.push('?');
       }}
