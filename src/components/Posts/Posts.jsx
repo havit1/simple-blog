@@ -8,8 +8,8 @@ import SearchBox from '../SearchBox/SearchBox';
 import PostList from '../PostsList/PostsList';
 import Pagination from '../common/pagination';
 
-import { Wrapper, LoadindWrapper } from './Posts.styles';
-import { CustomMessageTypography } from '../../styles/common';
+import { Wrapper } from './Posts.styles';
+import { CustomMessageTypography, LoadindWrapper } from '../../styles/common';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -29,7 +29,6 @@ const Posts = ({ match, history }) => {
 
   React.useEffect(() => {
     // Random data from jsonplaceholder
-    console.log('Getting data from jsonplaceholder');
     (async function getData() {
       try {
         const { data } = await getPosts(match.params.sectionId);
@@ -46,8 +45,6 @@ const Posts = ({ match, history }) => {
 
   // SEARCH HANDLING
   React.useEffect(() => {
-    console.log('Handling search');
-
     const decodetURI = decodeURI(query.get('searchQuery'));
 
     const filtered = posts.filter(
@@ -60,7 +57,6 @@ const Posts = ({ match, history }) => {
 
   // Pagination
   React.useEffect(() => {
-    console.log('Handling pagination');
     const paginated = paginate(
       decodeURI(query.get('searchQuery')) !== 'null' ? filteredPosts : posts,
       page,
@@ -71,18 +67,18 @@ const Posts = ({ match, history }) => {
 
   return (
     <Wrapper>
-      <SearchBox
-        value={searchQuery}
-        onChange={setSearchQuery}
-        history={history}
-        onSubmit={setPage}
-      />
       {loading ? (
         <LoadindWrapper>
           <CustomMessageTypography>Loading....</CustomMessageTypography>
         </LoadindWrapper>
       ) : (
         <>
+          <SearchBox
+            value={searchQuery}
+            onChange={setSearchQuery}
+            history={history}
+            onSubmit={setPage}
+          />
           <PostList posts={paginatedPosts} />
           <Pagination
             itemsCount={

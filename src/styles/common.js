@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 export const Wrapper = styled('div')`
-  height: 100%;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,4 +24,12 @@ export const CustomMessageTypography = styled(Typography)`
     font-size: 3rem;
     text-align: center;
   }
+`;
+
+export const LoadindWrapper = styled('span')`
+  height: 80vh;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

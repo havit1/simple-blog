@@ -49,7 +49,6 @@ const CustomListItem = styled(ListItem)`
 const CustomNav = styled(`nav`)`
   display: flex;
   justify-content: center;
-  margin-bottom: 60px;
 `;
 
 export const CustomLink = styled(Link)`

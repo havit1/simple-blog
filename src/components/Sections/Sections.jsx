@@ -22,8 +22,8 @@ const Sections = () => {
       <CenteredPaper>
         <CustomList component='ul'>
           {sections.map((section) => (
-            <StylesProvider injectFirst>
-              <CustomListItem button key={section.id}>
+            <StylesProvider key={section.id} injectFirst>
+              <CustomListItem button>
                 <CustomLink to={`sections/${section.id}/1`}>
                   <CustomListItemText>{section.name}</CustomListItemText>{' '}
                 </CustomLink>

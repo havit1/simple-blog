@@ -2,14 +2,16 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 import styled from 'styled-components';
+import { Wrapper } from '../../styles/common';
+
+export const PostWrapper = styled(Wrapper)`
+  margin-top: 30px;
+  height: unset;
+`;
 
 export const CustomPaper = styled(Paper)`
   width: 70%;
   height: 80%;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
   min-height: 200px;
   padding: 20px;
 `;

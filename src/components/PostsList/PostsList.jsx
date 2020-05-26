@@ -2,7 +2,7 @@ import React from 'react';
 import PostCard from '../common/postCard';
 import { CustomList, CustomListItem, CustomLink } from './PostsList.styles';
 
-import { CustomMessageTypography } from '../../styles/common';
+import { CustomMessageTypography, LoadindWrapper } from '../../styles/common';
 
 const PostList = ({ posts }) => {
   return posts.length > 0 ? (
@@ -16,9 +16,11 @@ const PostList = ({ posts }) => {
       ))}
     </CustomList>
   ) : (
-    <CustomMessageTypography component='h1'>
-      Nothing was found :(
-    </CustomMessageTypography>
+    <LoadindWrapper>
+      <CustomMessageTypography component='h1'>
+        Nothing was found :(
+      </CustomMessageTypography>
+    </LoadindWrapper>
   );
 };
 

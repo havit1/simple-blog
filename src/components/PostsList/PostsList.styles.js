@@ -7,8 +7,9 @@ export const CustomList = styled(List)`
   && {
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
-    height: 100%;
+    // padding-top: 20px;
+    height: 70%;
+    min-height: 640px;
   }
 `;
 export const CustomListItem = styled(ListItem)`

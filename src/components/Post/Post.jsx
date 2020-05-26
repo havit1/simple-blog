@@ -7,8 +7,9 @@ import {
   CustomPaper,
   CustomTypographyBigTitle,
   CustomTypogtaphyMediumText,
+  PostWrapper,
 } from './Post.styles';
-import { Wrapper, CustomMessageTypography } from '../../styles/common';
+import { CustomMessageTypography, LoadindWrapper } from '../../styles/common';
 
 const Post = () => {
   const [postData, setPostData] = React.useState({});
@@ -28,9 +29,11 @@ const Post = () => {
   }, []);
 
   return (
-    <Wrapper>
+    <PostWrapper>
       {loading ? (
-        <CustomMessageTypography>Loading...</CustomMessageTypography>
+        <LoadindWrapper>
+          <CustomMessageTypography>Loading...</CustomMessageTypography>
+        </LoadindWrapper>
       ) : (
         <CustomPaper>
           <CustomTypographyBigTitle component='h1'>
@@ -41,7 +44,7 @@ const Post = () => {
           </CustomTypogtaphyMediumText>
         </CustomPaper>
       )}
-    </Wrapper>
+    </PostWrapper>
   );
 };
 
