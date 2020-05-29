@@ -1,5 +1,5 @@
 import React from 'react';
-import PostCard from '../common/postCard';
+import PostCard from '../common/PostCard';
 import { CustomList, CustomListItem, CustomLink } from './PostsList.styles';
 
 import { CustomMessageTypography, LoadindWrapper } from '../../styles/common';
